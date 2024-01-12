@@ -6,6 +6,10 @@ locals {
   name = try(trimsuffix(var.name, ".fifo"), "")
 }
 
+provider "aws" {
+  region = "eu-west-1"
+}
+
 resource "aws_sqs_queue" "this" {
   count = var.create ? 1 : 0
 
